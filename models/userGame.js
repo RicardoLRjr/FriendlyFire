@@ -5,20 +5,20 @@ module.exports = function (sequelize, DataTypes) {
         gameId: DataTypes.INTEGER,
         userId: DataTypes.INTEGER,
       },
-    //   {
-    //     indexes: [
-    //       {
-    //         unique: true,
-    //         fields: ["user1Id", "user2Id"],
-    //       },
-    //     ],
-    //   }
+      // {
+      //   indexes: [
+      //     {
+      //       unique: true,
+      //       fields: ["userId", "gameId"],
+      //     },
+      //   ],
+      // }
     );
   
-    // Friend.associate = function (models) {
-    //   Friend.belongsTo(models.User, { as: "User1" });
-    //   Friend.belongsTo(models.User, { as: "User2" });
-    // };
+    UserGame.associate = function (models) {
+      UserGame.belongsTo(models.User, {foreignKey: "userId"});
+      UserGame.belongsTo(models.Game, {foreignKey: "gameId"});
+    };
   
     // Friend.removeAttribute('id');
   

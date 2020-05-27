@@ -30,7 +30,7 @@ const Navbar = (props) => {
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
                 <Link to={`/account/${props.userObject.id}`} id="FFheadText">
-                  Edit Profile
+                  Edit {props.userObject.handle}'s Profile
                 </Link>
               </li>
               <li onClick={props.logOutUser}>

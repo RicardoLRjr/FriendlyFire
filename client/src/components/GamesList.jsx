@@ -2,24 +2,17 @@ import React from "react";
 
 const GamesList = (props) => {
   return (
-    <table className="centered highlight bordered">
-      <thead>
-        <tr>
-          <th>Game</th>
-          <th>Platform</th>
-          <th>Remove</th>
-        </tr>
-      </thead>
       <tbody>
         {props.games.map((game) => {
           return (
             <tr>
+              <td>{game.id}</td>
               <td>{game.name}</td>
               <td>{game.platform}</td>
               <td>
                 <button
                   className="waves-effect waves-light btn save"
-                  id="ButtonColor"
+                  id="removeFriends"
                   type="submit"
                   onClick={() => props.deleteGame(game.id)}
                 >
@@ -30,7 +23,6 @@ const GamesList = (props) => {
           );
         })}
       </tbody>
-    </table>
   );
 };
 

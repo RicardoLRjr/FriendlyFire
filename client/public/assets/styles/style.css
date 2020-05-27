@@ -13,6 +13,9 @@
 #FFheadText{
     color: #d8dae7;
 }
+#orangeText{
+    color: #DF740C;
+}
 
 #removeFriends{
     background-color: #DF740C!important;
@@ -32,7 +35,8 @@ main {
 #ButtonColor{
     background-color: #34608d!important
 }
-/* a:active{
-background-color: #18cae6;
-} */
+
+.gameSelect{
+    background-color: #34608d !important;
+}
 

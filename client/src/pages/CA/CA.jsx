@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import "./CA.css";
 import axios from "axios";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs"
 
 class CreateAccount extends Component {
   state = {
     email: "",
     handle: "",
     password: "",
-
   };
 
   handleChange = (event) => {
@@ -49,8 +49,19 @@ class CreateAccount extends Component {
       console.log(err);
     });
   } 
-
-
+// To-Do: ...figure out how to use some form of encryption to store user passwords. 
+// passwordHasher = (event) => {
+//   bcrypt.genSalt(10, (err, salt) => {
+//     bcrypt.hash(this.state.password, salt, (err, hash) => {
+//       console.log("test of hashing");
+//       console.log(hash);
+//       this.setState({
+//         password: hash
+//       })
+//     }
+//     )}
+//   )}
+ 
   handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -110,9 +121,9 @@ class CreateAccount extends Component {
                   id="icon_sms"
                   type="password"
                   name="password"
-                  onChange={this.handleChange}
-                />
+                  onChange={this.handleChange}/>
                 <label for="icon_">Password</label>
+                <span className="helper-text" id="orangeText" data-error="wrong" data-success="right">Password must be longer than 7 characters and must include a special character, a number, and a capital letter.</span>
               </div>
             </div>
             <p>
@@ -124,27 +135,15 @@ class CreateAccount extends Component {
           </form>
           <div className="row">
             <button
-              class="btn waves-effect waves-light"
+              className="btn waves-effect waves-light"
               type="submit"
               id="ButtonColor"
               name="action"
               onClick={this.handleSubmit}
             >
               Create Account
-              <i class="material-icons right">save</i>
+              <i className="material-icons right">save</i>
             </button>
-          </div>
-
-          <div className="row">
-            <a
-              className="btn waves-effect waves-light"
-              id="ButtonColor"
-              name="action"
-              onClick={this.pageChanger}
-            >
-              Add Info
-              <i className="material-icons right">send</i>
-            </a>
           </div>
 
         </div>

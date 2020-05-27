@@ -1,15 +1,5 @@
 
-USE friendly_fire_db;
-CREATE TABLE users (
-    email VARCHAR(255),
-    password VARCHAR(255),
-    handle VARCHAR(255),
-    discord VARCHAR(255),
-    createdAt VARCHAR(255),
-    updatedAt VARCHAR(255)
-);
-
-INSERT INTO users (email, password, handle, discord, createdAt, updatedAt)
+INSERT INTO Users (email, password, handle, discord, createdAt, updatedAt)
 VALUES (
 	"joe@gmail.com",
     "passwordJoe",
@@ -251,7 +241,7 @@ VALUES (
     '9999-12-31 23:59:59'
     );
     
-INSERT INTO games (name, platform, createdAt, updatedAt)
+INSERT INTO Games (name, platform, createdAt, updatedAt)
 VALUES (
 	"Modern Warfare",
     "PC",
@@ -390,7 +380,7 @@ VALUES (
     '9999-12-31 23:59:59'
     );
     
-INSERT INTO usergames (gameId, userId, createdAt, updatedAt)
+INSERT INTO UserGames (gameId, userId, createdAt, updatedAt)
 VALUES (
 	"1",
     "2",
@@ -404,7 +394,7 @@ VALUES (
     '9999-12-31 23:59:59'
     ),(
 	"2",
-    "1",
+    "4",
     '9999-12-31 23:59:59',
     '9999-12-31 23:59:59'
     ),(
@@ -435,7 +425,7 @@ VALUES (
     '9999-12-31 23:59:59'
     );
     
-INSERT INTO friends (user1Id, user2Id, createdAt, updatedAt)
+INSERT INTO Friends (user1Id, user2Id, createdAt, updatedAt)
 VALUES (
 	"1",
     "4",

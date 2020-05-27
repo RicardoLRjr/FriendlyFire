@@ -27,12 +27,10 @@ class AboutMe extends Component {
   }
 
    handleSubmitUser = (event) => {
-
     event.preventDefault();
     axios
       .put(`/api/user/${this.props.match.params.id}`, {
         discord: this.state.discordName,
-        // games: this.state.games,
       })
       .then((response) => {
         console.log(response);
@@ -41,6 +39,7 @@ class AboutMe extends Component {
         console.log(err);
       });
   };
+
   handleSubmit = (event) => {
     event.preventDefault();
     const search = this.state.search;

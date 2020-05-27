@@ -2,23 +2,24 @@ import React, { Component } from "react";
 import FriendList from "../../components/friendHandler/friendList";
 import axios from "axios";
 import GamesList from "../../components/GamesList";
+import Select from "react-select";
 
 class Dashboard extends Component {
   state = {
+    userName: "",
     friendResults: [],
     searchFriendResults: [],
     gameResults: [],
     searchGame: "",
     searchName: "",
     searchBy: "",
-    id: ""
+    id: "",
   };
 
   componentDidMount() {
     axios
       .get(`/api/friend/${this.props.match.params.id}`)
       .then((response) => {
-        console.log(response.data);
         this.setState({
           friendResults: response.data,
           searchFriendResults: response.data,
@@ -32,8 +33,17 @@ class Dashboard extends Component {
     axios
       .get(`/api/usergame/${this.props.match.params.id}`)
       .then((response) => {
-        console.log(response.data);
         this.setState({ gameResults: response.data });
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    axios
+      .get(`/api/user/${this.props.match.params.id}`)
+      .then((userResponse) => {
+        this.setState({ userName: userResponse.data.handle });
       })
       .catch((err) => {
         if (err) {
@@ -58,18 +68,25 @@ class Dashboard extends Component {
         friend.handle.includes(this.state.searchName)
       );
       this.setState({ searchFriendResults: filteredUsers });
+      this.setState({ searchBy: " by Name"});
     }
   };
 
   handleSubmitGame = (event) => {
     event.preventDefault();
     const searchGame = this.state.searchGame;
+    const friends = this.state.friendResults.map(friend=>{
+      return {userId: friend.id}
+    })
     axios
-      .get(`/api/friend/find?game=${searchGame}`)
+      .post(`/api/usergame/filterByGame/${searchGame}`,{friends: friends})
       .then((response) => {
-        console.log(response.data.results);
-        this.setState({ friendResults: [response.data] });
-        this.setState({ searchBy: " by Game" });
+        console.log(response.data);
+        const userArray = response.data.map(user=>{
+          return user.User;
+        })
+        this.setState({ searchFriendResults: userArray});
+        this.setState({ searchBy: " by Game"});
       })
       .catch((err) => {
         if (err) {
@@ -98,14 +115,41 @@ class Dashboard extends Component {
       .catch((er) => console.log(er));
   };
 
+
+  deleteFriend = (friendId) => {
+    axios
+      .delete(`/api/friend/${friendId}/${this.props.match.params.id}`)
+      .then(() => {
+        console.log("friend deleted");
+        axios
+          .get(`/api/friend/${this.props.match.params.id}`)
+          .then((response) => {
+            this.setState({
+              friendResults: response.data,
+              searchFriendResults: response.data,
+            });
+          })
+          .catch((err) => {
+            if (err) {
+              console.log(err);
+            }
+          });
+      })
+      .catch((er) => console.log(er));
+  };
+
+  handleSelectChange = (selectedOption) => {
+    this.setState({ searchGame: selectedOption.value });
+  };
+
   render() {
     return (
       <div className="container center">
-        <h4 id="FFheadText">Dashboard</h4>
+        <h4 id="FFheadText">{this.state.userName}'s Dashboard</h4>
         <br />
         <div className="row">
           <h5 id="FFheadText">
-            Search your friends list{this.state.searchBy}!
+            Search your friends list{this.state.searchBy}
           </h5>
           <form className="col s3 offset-s1" onSubmit={this.handleSubmitName}>
             <div className="row">
@@ -132,13 +176,29 @@ class Dashboard extends Component {
           <form className=" col s3 offset-s4" onSubmit={this.handleSubmitGame}>
             <div className="row">
               <div className="input-field">
-                <textarea
-                  id="search_by_game"
-                  className="materialize-textarea"
-                  name="searchGame"
-                  onChange={this.handleChange}
-                ></textarea>
-                <label for="search_by_game">Search By Game</label>
+              <Select
+                className="gameSelect"
+                styles={{
+                  menu: (provided) => ({ ...provided, zIndex: 9999, color: "black", background: "#34608d" }),
+                  menuList: (provided) => ({...provided, background: "#34608d"}),
+                  control: (provided) => ({...provided, background: "#34608d", minHeight: 32}),
+                  container: (provided) => ({...provided, background: "#34608d"}),
+                  placeholder: (provided) => ({...provided, color: "#d8dae7"}),
+                  input: (provided) => ({...provided, color: "#d8dae7"}),
+                  dropdownIndicator: (provided) => ({...provided, color: "#d8dae7"}),
+                  selectedOption: (provided) => ({...provided, color: "#d8dae7"}),
+                  singleValue: (provided) => ({...provided, color: "#d8dae7"}),
+                }}
+                onChange={this.handleSelectChange}
+                options={this.state.gameResults.map((game) => {
+                  const option = {
+                    value: game.id,
+                    label: `${game.name} | ${game.platform}`,
+                  };
+                  return option;
+                })}
+                placeholder="Search By Game"
+              />
                 <button
                   className="btn waves-effect waves-light"
                   id="ButtonColor"
@@ -152,6 +212,7 @@ class Dashboard extends Component {
             </div>
           </form>
         </div>
+        <div className="row">
         <h3>Friends List</h3>
         <table className="centered highlight bordered">
           <thead>
@@ -159,16 +220,34 @@ class Dashboard extends Component {
               <th>User ID</th>
               <th>Username</th>
               <th>Discord Name</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <FriendList
             friendResults={this.state.searchFriendResults}
             saveButton={false}
+            deleteButton={true}
+            deleteFriend={this.deleteFriend}
           />
         </table>
-
+        </div>
+        <div className="row">
         <h3>Your Games</h3>
-        <GamesList games={this.state.gameResults} deleteGame={this.deleteGame}/>
+        <table className="centered highlight bordered">
+      <thead>
+        <tr>
+          <th>Game ID</th>
+          <th>Game</th>
+          <th>Platform</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+        <GamesList
+          games={this.state.gameResults}
+          deleteGame={this.deleteGame}
+        />
+      </table>
+        </div>
       </div>
     );
   }

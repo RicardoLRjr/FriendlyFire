@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Home.css";
 import jwt from "jsonwebtoken";
 import axios from "axios"
+import bcrypt, { hash } from "bcryptjs"
 
 class Home extends Component {
   state = {
@@ -17,11 +18,23 @@ class Home extends Component {
       error: "",
     });
   };
+  // TO-DO: Password encryption
+  // passwordHasher = (event) => {
+  //   bcrypt.genSalt(10, (err, salt) => {
+  //     bcrypt.hash(this.state.password, salt, (err, hash) => {
+  //       console.log("test of hashing");
+  //       console.log(hash);
+  //       this.setState({
+  //         password: hash
+  //       })
+  //     }
+  //     )}
+  //   )}
+   
 
   handleSubmit = (event, email, password) => {
     event.preventDefault();
-    axios
-      .post("/api/auth", {
+    axios.post("/api/auth", {
         email,
         password,
       })
@@ -41,12 +54,13 @@ class Home extends Component {
       .catch((err) => {
         console.log(err);
         this.setState({ error: true });
-      });
+      })
+    ;
   };
 
   render() {
     return (
-      <div className="container center">
+      <section className="container center">
         <h1 id="FFheadText"> Welcome to FriendlyFire! </h1>
         <br />
         <div className="row">
@@ -62,7 +76,7 @@ class Home extends Component {
             <div className="row">
               <div className="input-field col s12">
                 <i className="material-icons prefix">sms</i>
-                <input id="icon_sms" type="password" name="password" onChange={this.handleInputChange}/>
+                <input label="passwordIcon" id="icon_sms" type="password" name="password" onChange={this.handleInputChange}/>
                 <label htmlFor="icon_">Password</label>
               </div>
             </div>
@@ -89,7 +103,7 @@ class Home extends Component {
             </a>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }
