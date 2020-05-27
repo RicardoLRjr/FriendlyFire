@@ -41,7 +41,6 @@ const Navbar = (props) => {
         ) : (
           <ul id="nav-mobile" className="sidenav">
             <li>
-              {" "}
               <Link
                 to={`/dashboard/${props.userObject.id}`}
                 className="brand-logo center"
