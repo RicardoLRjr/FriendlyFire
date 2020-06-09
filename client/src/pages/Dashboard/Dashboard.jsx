@@ -206,7 +206,7 @@ class Dashboard extends Component {
         </div>
         <div className="row">
         <h3>Your Games</h3>
-        <table className="centered highlight bordered">
+    <table className="centered highlight bordered">
       <thead>
         <tr>
           <th>Game ID</th>

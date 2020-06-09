@@ -1,13 +1,42 @@
-## FriendlyFire
+# This is the readMe for FriendlyFire. 
 
-### A New Gen way of finding new gaming friends!
+ ## Name:
+ Hi! I am Ricardo Russ
 
-### You can find a friend by what games you own and enjoy!
+ ## Project Name:
+ FriendlyFire
 
-### Don't be lonely during this pandemic, find a New Friend!
+ ## Description:
+ Friendly Fire is an application that allows gamers to connect with other gamers to find friends to play with.  
+
+ ## Table of Contents: 
+ # Installation 
+ # Usage 
+ # License 
+ # Contributing Authors 
+ # Tests 
+ # Miscellaneous 
+
+ ## Installation Instructions:
+ It is not installed! it is currently up on heroku
+
+ ## Usage Instructions:
+ Upon navigating to the site, the user will.. add to here later
+
+ ## License:
+ MIT 
+
+ ## Contributing Authors: 
+ Ricardo Russ, Devin Carr, Landry Norman, David Rospond 
+
+ ## Tests:
+ N/A
+
+ ## Miscellaneous:
+ no
 
 
+ Badge:
+ https://img.shields.io/badge/Maintained-Maintained-Green.svg)(https://shields.io/) 
 
-
-
-This is an app that allows gamers to make friends accross platforms or just to find new friends on their current platform based on the games they play. Deployed to heroku: https://secure-tor-59417.herokuapp.com/
+ <img src= https://avatars2.githubusercontent.com/u/60279300?v=4> 

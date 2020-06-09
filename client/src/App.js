@@ -99,7 +99,8 @@ function App() {
 
 export default App;
 
-//TODO fix bug: "going back to create account page after creating account crashes the server"
+//TODO render logged in username somewhere on dashboard ✔
+//TODO fix bug: "going back to create account page after creating account crashes the server"✔
+//TODO add delete friend button ✔
 //TODO hash passwords before storing them and check passwords against their hash
-//TODO fix functionality for finding friend based on game
-//TODO protect routes
+//TODO fix functionality for finding friend based on game ✔

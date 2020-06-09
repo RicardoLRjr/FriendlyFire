@@ -18,6 +18,7 @@ class Home extends Component {
       error: "",
     });
   };
+  
   // TO-DO: Password encryption
   // passwordHasher = (event) => {
   //   bcrypt.genSalt(10, (err, salt) => {
