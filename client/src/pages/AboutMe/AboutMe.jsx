@@ -195,7 +195,6 @@ class AboutMe extends Component {
         <div className="row">
           <button
             className="btn waves-effect waves-light"
-            href="/Dashboard"
             id="ButtonColor"
             type="submit"
             name="action"

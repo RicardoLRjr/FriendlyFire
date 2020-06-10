@@ -21,6 +21,10 @@ class FindFriend extends Component {
     });
   }
 
+  pageChanger = (event) => {
+    window.location.href=`/dashboard/${this.props.match.params.id}`
+  }
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -165,9 +169,9 @@ class FindFriend extends Component {
           </table>
           <a
             className="waves-effect waves-light btn"
-            href="/dashboard"
             id="ButtonColor"
-          >
+            onClick={this.pageChanger}
+              >
             <i className="material-icons left">arrow_back</i>Back to the
             dashboard
           </a>
