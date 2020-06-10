@@ -3,7 +3,7 @@
 
  ## Description:
  Friendly Fire is an application that allows gamers to connect with other gamers to find friends to play games with.  
-
+ 
  ## Table of Contents: 
  # Installation
  # Usage 
