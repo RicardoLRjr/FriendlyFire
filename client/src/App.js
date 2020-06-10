@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import FindFriend from "./pages/FindFriends/FindFriend";
 import AddGame from "./pages/AddGame/AddGame";
 import NoMatch from "./pages/NoMatch/NoMatch";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const [userObject, setUserObject] = useState({});
@@ -66,20 +67,23 @@ function App() {
                 <Home {...props} checkForToken={checkForToken} />
               )}
             />
-            <Route
+            {/* <Route
               path={["/account/:id"]}
-              render={(props) => <AboutMe {...props} logOutUser={logOutUser}/>}
+              render={(props) => <AboutMe {...props} logOutUser={logOutUser} />}
+            /> */}
+            <PrivateRoute
+              logOutUser={logOutUser}
+              path="/account/:id"
+              component={AboutMe}
             />
-            <Route path={["/createAccount"]}
-            render={(props) => <CA {...props} checkForToken={checkForToken}/>}/>
             <Route
-              path={["/dashboard/:id"]}
-              render={(props) => <Dashboard {...props} />}
+              path="/createAccount"
+              render={(props) => (
+                <CA {...props} checkForToken={checkForToken} />
+              )}
             />
-            <Route
-              path={["/findfriends/:id"]}
-              render={(props) => <FindFriend {...props} />}
-            />
+            <PrivateRoute path="/dashboard/:id" component={Dashboard} />
+            <PrivateRoute path="/findfriends/:id" component={FindFriend} />
             <Route
               path={["/addgame/:id"]}
               render={(props) => <AddGame {...props} />}
@@ -103,4 +107,7 @@ export default App;
 //TODO fix bug: "going back to create account page after creating account crashes the server"✔
 //TODO add delete friend button ✔
 //TODO hash passwords before storing them and check passwords against their hash
-//TODO fix functionality for finding friend based on game ✔
+//TODO Don't show current user when searching for friends by game
+//TODO protect routes
+//TODO tweak look and layout
+

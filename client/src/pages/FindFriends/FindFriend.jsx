@@ -54,11 +54,10 @@ class FindFriend extends Component {
     axios
       .get(`/api/friend/find?name=${searchName}`)
       .then((response) => {
-        console.log(response.data);
-        // debugger
-        this.setState({ friendResults: [response.data] }
-          );
-          this.setState({searchBy: "Name"});
+        if (response.data) {
+          this.setState({ friendResults: [response.data] });
+          this.setState({ searchBy: "Name" });
+        }
       })
       .catch((err) => {
         if (err) {
@@ -74,11 +73,11 @@ class FindFriend extends Component {
       .get(`/api/usergame/users/${searchGame}`)
       .then((response) => {
         console.log(response.data);
-        const userArray = response.data.map(user=>{
+        const userArray = response.data.map((user) => {
           return user.User;
-        })
-        this.setState({ friendResults: userArray});
-        this.setState({ searchBy: "Game"});
+        });
+        this.setState({ friendResults: userArray });
+        this.setState({ searchBy: "Game" });
       })
       .catch((err) => {
         if (err) {
@@ -119,15 +118,42 @@ class FindFriend extends Component {
               <Select
                 className="gameSelect"
                 styles={{
-                  menu: (provided) => ({ ...provided, zIndex: 9999, color: "black", background: "#34608d" }),
-                  menuList: (provided) => ({...provided, background: "#34608d"}),
-                  control: (provided) => ({...provided, background: "#34608d", minHeight: 32}),
-                  container: (provided) => ({...provided, background: "#34608d"}),
-                  placeholder: (provided) => ({...provided, color: "#d8dae7"}),
-                  input: (provided) => ({...provided, color: "#d8dae7"}),
-                  dropdownIndicator: (provided) => ({...provided, color: "#d8dae7"}),
-                  selectedOption: (provided) => ({...provided, color: "#d8dae7"}),
-                  singleValue: (provided) => ({...provided, color: "#d8dae7"}),
+                  menu: (provided) => ({
+                    ...provided,
+                    zIndex: 9999,
+                    color: "black",
+                    background: "#34608d",
+                  }),
+                  menuList: (provided) => ({
+                    ...provided,
+                    background: "#34608d",
+                  }),
+                  control: (provided) => ({
+                    ...provided,
+                    background: "#34608d",
+                    minHeight: 32,
+                  }),
+                  container: (provided) => ({
+                    ...provided,
+                    background: "#34608d",
+                  }),
+                  placeholder: (provided) => ({
+                    ...provided,
+                    color: "#d8dae7",
+                  }),
+                  input: (provided) => ({ ...provided, color: "#d8dae7" }),
+                  dropdownIndicator: (provided) => ({
+                    ...provided,
+                    color: "#d8dae7",
+                  }),
+                  selectedOption: (provided) => ({
+                    ...provided,
+                    color: "#d8dae7",
+                  }),
+                  singleValue: (provided) => ({
+                    ...provided,
+                    color: "#d8dae7",
+                  }),
                 }}
                 onChange={this.handleSelectChange}
                 options={this.state.usersGames.map((game) => {
