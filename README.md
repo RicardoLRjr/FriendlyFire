@@ -26,6 +26,7 @@
 
  To navigate back to the dashboard, the user can either click on the back to the dashboard button or click on the friendly fire logo on the navbar. 
 
+<<<<<<< HEAD
  Lastly, if for some reason the user wishes to delete their account, they can navigate to their edit profile page and click the delete button at the bottom. As this is irreversible, the user should be careful and only delete their account when they are absolutely sure. 
 
  ## License:
@@ -45,3 +46,12 @@
  https://img.shields.io/badge/Maintained-Maintained-Green.svg)(https://shields.io/) 
 
  <img src= https://avatars2.githubusercontent.com/u/60279300?v=4> 
+=======
+This is an app that allows gamers to make friends accross platforms or just to find new friends on their current platform based on the games they play. Deployed to heroku: https://secure-tor-59417.herokuapp.com/
+
+Links to materials used for project development:
+Trello: https://trello.com/b/ljSLzbUN/friendlyfire-workboard
+PowerPoint: https://docs.google.com/presentation/d/1w9dekd8PZZKBeBqdXzgkokaEmJ606pXhq9IjBhY7pDY/edit#slide=id.g29f43f0a72_0_5
+ERD:https://drive.google.com/file/d/1j10EXyTgz6wmjreoELJ3LGs9BAwBmkwY/view?usp=sharing
+Wireframes:https://drive.google.com/file/d/1nEh0XuYA9dJ2dCCTcnJOf5K4kgvmmBMc/view?usp=sharing
+>>>>>>> b61fb0006d2d2c17d4963212db34e593de5ebdfd

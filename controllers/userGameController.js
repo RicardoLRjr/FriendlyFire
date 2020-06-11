@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
+const { Op } = require("sequelize");
 
 router.post("/", (req, res) => {
   const newUserGame = {
@@ -28,17 +29,15 @@ router.post("/", (req, res) => {
 
 router.delete("/:gameId/:userId", (req, res) => {
   db.UserGame.destroy({
-      where: {
-        gameId: req.params.gameId,
-        userId: req.params.userId
-      }
-    })
+    where: {
+      gameId: req.params.gameId,
+      userId: req.params.userId,
+    },
+  })
     .then(() => {
-      res.json(
-        {
-          success: true,
-        },
-      );
+      res.json({
+        success: true,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -51,15 +50,17 @@ router.delete("/:gameId/:userId", (req, res) => {
 });
 
 //get all users that own a game
-router.get("/users/:id", (req, res)=>{
+router.get("/users/:id", (req, res) => {
   db.UserGame.findAll({
     where: {
-        gameId: req.params.id
+      gameId: req.params.id,
     },
-    include:[{
-      model: db.User,
-      attributes: ["id", "email", "handle"]
-    }]
+    include: [
+      {
+        model: db.User,
+        attributes: ["id", "email", "handle", "discord"],
+      },
+    ],
   })
     .then((result) => {
       res.json(result);
@@ -68,18 +69,45 @@ router.get("/users/:id", (req, res)=>{
       console.log(err);
       res.json(err);
     });
-})
+});
+
+router.post("/filterByGame/:id", (req, res) => {
+  console.log(req.body.friends);
+  db.UserGame.findAll({
+    where: {
+      [Op.and]: [
+        { gameId: req.params.id },
+        { [Op.or]: req.body.friends },
+      ],
+    },
+    include: [
+      {
+        model: db.User,
+        attributes: ["id", "email", "handle", "discord"],
+      },
+    ],
+  })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json(err);
+    });
+});
 
 //get all owned games route
 router.get("/:id", (req, res) => {
   db.User.findOne({
     where: {
-        id: req.params.id
+      id: req.params.id,
     },
-    include:[{
-      model: db.Game,
-      attributes: ["id", "name", "platform"]
-    }]
+    include: [
+      {
+        model: db.Game,
+        attributes: ["id", "name", "platform"],
+      },
+    ],
   })
     .then((result) => {
       res.json(result.Games);
@@ -90,4 +118,4 @@ router.get("/:id", (req, res) => {
     });
 });
 
-module.exports = router
+module.exports = router;
