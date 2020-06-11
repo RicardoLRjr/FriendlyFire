@@ -108,9 +108,16 @@ export default App;
 //TODO add delete friend button ✔
 //TODO hash passwords before storing them and check passwords against their hash
 <<<<<<< HEAD
+<<<<<<< HEAD
 //TODO fix functionality for finding friend based on game ✔
 =======
 //TODO Don't show current user when searching for friends by game
 //TODO protect routes
 //TODO tweak look and layout
 >>>>>>> b61fb0006d2d2c17d4963212db34e593de5ebdfd
+=======
+//TODO Don't show current user when searching for friends by game
+//TODO protect routes
+//TODO tweak look and layout
+
+>>>>>>> 0d748ff5237b3bf9c65045ffb1d95009557ab73c

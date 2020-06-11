@@ -41,11 +41,16 @@
  ## Bugs:
  At the moment, leaving the edit profile page without adding at least one game will cause the site to crash.
 
-
+## Links to materials used for project development:
+Trello: https://trello.com/b/ljSLzbUN/friendlyfire-workboard
+PowerPoint: https://docs.google.com/presentation/d/1w9dekd8PZZKBeBqdXzgkokaEmJ606pXhq9IjBhY7pDY/edit#slide=id.g29f43f0a72_0_5
+ERD:https://drive.google.com/file/d/1j10EXyTgz6wmjreoELJ3LGs9BAwBmkwY/view?usp=sharing
+Wireframes:https://drive.google.com/file/d/1nEh0XuYA9dJ2dCCTcnJOf5K4kgvmmBMc/view?usp=sharing
  Badge:
  https://img.shields.io/badge/Maintained-Maintained-Green.svg)(https://shields.io/) 
 
  <img src= https://avatars2.githubusercontent.com/u/60279300?v=4> 
+<<<<<<< HEAD
 =======
 This is an app that allows gamers to make friends accross platforms or just to find new friends on their current platform based on the games they play. Deployed to heroku: https://secure-tor-59417.herokuapp.com/
 
@@ -54,4 +59,4 @@ Trello: https://trello.com/b/ljSLzbUN/friendlyfire-workboard
 PowerPoint: https://docs.google.com/presentation/d/1w9dekd8PZZKBeBqdXzgkokaEmJ606pXhq9IjBhY7pDY/edit#slide=id.g29f43f0a72_0_5
 ERD:https://drive.google.com/file/d/1j10EXyTgz6wmjreoELJ3LGs9BAwBmkwY/view?usp=sharing
 Wireframes:https://drive.google.com/file/d/1nEh0XuYA9dJ2dCCTcnJOf5K4kgvmmBMc/view?usp=sharing
->>>>>>> b61fb0006d2d2c17d4963212db34e593de5ebdfd
+
