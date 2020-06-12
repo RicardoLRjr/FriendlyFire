@@ -13,8 +13,7 @@
  # Miscellaneous 
 
  ## Installation Instructions:
- It is not installed! it is currently deployed on Heroku, but if any changes to our deployment strategy are made, we will update this readme!
-
+N/A, as this is a web application.
  ## Usage Instructions:
  Upon navigating to the site, the user will first be prompted to either sign in or create an account. If the user creates an account, they will be directed to the "create account" page, where they will enter a username, an email address, and a password, with validation, to create their account. 
  
