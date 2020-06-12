@@ -51,9 +51,8 @@ function App() {
 
   return (
     <Router>
-      <header></header>
       <main>
-        <div>
+        <section>
           <NavBar
             isLoggedIn={isLoggedIn}
             logOutUser={logOutUser}
@@ -67,10 +66,6 @@ function App() {
                 <Home {...props} checkForToken={checkForToken} />
               )}
             />
-            {/* <Route
-              path={["/account/:id"]}
-              render={(props) => <AboutMe {...props} logOutUser={logOutUser} />}
-            /> */}
             <PrivateRoute
               logOutUser={logOutUser}
               path="/account/:id"
@@ -92,7 +87,7 @@ function App() {
               <NoMatch exact path={["*"]} />
             </Route>
           </Switch>
-        </div>
+        </section>
       </main>
       <footer>
         <Footer />
@@ -103,8 +98,18 @@ function App() {
 
 export default App;
 
-//TODO fix bug: "going back to create account page after creating account crashes the server"
+//TODO render logged in username somewhere on dashboard ✔
+//TODO fix bug: "going back to create account page after creating account crashes the server"✔
+//TODO add delete friend button ✔
 //TODO hash passwords before storing them and check passwords against their hash
+
+//TODO fix functionality for finding friend based on game ✔
+
 //TODO Don't show current user when searching for friends by game
 //TODO protect routes
 //TODO tweak look and layout
+
+//TODO Don't show current user when searching for friends by game
+//TODO protect routes
+//TODO tweak look and layout
+
