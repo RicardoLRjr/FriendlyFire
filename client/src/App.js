@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import logo from "./logo.svg";
 import jwt from "jsonwebtoken";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/Persistent/Navbar";
