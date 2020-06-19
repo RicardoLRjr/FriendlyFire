@@ -7,13 +7,44 @@ class AboutMe extends Component {
   state = {
     discordName: "",
     gameResults: [],
-    search: "",
-    username: ""
+    friendResults: []
   };
-
+// importing componentDidMount from dashboard.js
   componentDidMount(){
-    
-  }
+    axios
+    .get(`/api/friend/${this.props.match.params.id}`)
+    .then((response) => {
+      this.setState({
+        friendResults: response.data,
+        searchFriendResults: response.data,
+      });
+    })
+    .catch((err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  axios
+    .get(`/api/usergame/${this.props.match.params.id}`)
+    .then((response) => {
+      this.setState({ gameResults: response.data });
+    })
+    .catch((err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  axios
+    .get(`/api/user/${this.props.match.params.id}`)
+    .then((userResponse) => {
+      this.setState({ userName: userResponse.data.handle });
+    })
+    .catch((err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+}
 
   pageChanger = (event) => {
     window.location.href=`/dashboard/${this.props.match.params.id}`
@@ -132,7 +163,7 @@ class AboutMe extends Component {
   render() {
     return (
       <div className="container center">
-        <h1 id="FFheadText"> {this.state.userName}'s account page </h1>
+        <h3 id="FFheadText"> {this.state.userName}'s account page </h3>
         <br />
         <div className="row">
           <form className="col s12 center" onSubmit={this.handleSubmitUser}>
