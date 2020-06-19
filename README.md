@@ -1,8 +1,8 @@
  ## Project Name:
- FriendlyFire
+ FriendOps
 
  ## Description:
- Friendly Fire is an application that allows gamers to connect with other gamers to find friends to play games with.  
+ FriendOps is an application that allows gamers to connect with other gamers to find friends to play games with.  
  
  ## Table of Contents: 
  # Installation
@@ -36,7 +36,7 @@ N/A, as this is a web application.
 
 ![Friend-list](client/public/assets/img/SC5!.png)
 
- To navigate back to the dashboard, the user can either click on the back to the dashboard button or click on the friendly fire logo on the navbar. 
+ To navigate back to the dashboard, the user can either click on the back to the dashboard button or click on the FriendOps logo on the navbar. 
 
 ![Dashboard with Friend-List](client/public/assets/img/SC6!.png)
 
@@ -54,6 +54,10 @@ N/A, as this is a web application.
  ## Bugs:
  At the moment, leaving the edit profile page without adding at least one game will cause the site to crash.
 
+## Names used during development:
+1. Project-placeholder
+2. FriendlyFire
+3. FriendOps
 
 ## Links to materials used for project development:
 Trello: https://trello.com/b/ljSLzbUN/friendlyfire-workboard
