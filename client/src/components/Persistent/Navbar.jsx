@@ -5,15 +5,15 @@ const Navbar = (props) => {
   return (
     <nav>
       <div className="nav-wrapper" id="NavFooter">
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-          <i class="material-icons">menu</i>
+        <a href="#" data-target="mobile-demo" className="sidenav-trigger">
+          <i className="material-icons">menu</i>
         </a>
         <Link
           to={`/dashboard/${props.userObject.id}`}
           className="brand-logo center"
           id="FFheadText"
         >
-          FriendlyFire
+          FriendOps
         </Link>
         {props.isLoggedIn ? (
           <>
@@ -47,7 +47,7 @@ const Navbar = (props) => {
                 className="brand-logo center"
                 id="FFheadText"
               >
-                FriendlyFire
+                FriendOps
               </Link>
             </li>
             <li>

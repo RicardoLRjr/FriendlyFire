@@ -8,7 +8,12 @@ class AboutMe extends Component {
     discordName: "",
     gameResults: [],
     search: "",
+    username: ""
   };
+
+  componentDidMount(){
+    
+  }
 
   pageChanger = (event) => {
     window.location.href=`/dashboard/${this.props.match.params.id}`
@@ -20,11 +25,6 @@ class AboutMe extends Component {
       [name]: value,
     });
   };
-
-
-  pageChanger = (event) => {
-    window.location.href=`/dashboard/${this.props.match.params.id}`
-  }
 
    handleSubmitUser = (event) => {
     event.preventDefault();
@@ -132,7 +132,7 @@ class AboutMe extends Component {
   render() {
     return (
       <div className="container center">
-        <h1 id="FFheadText"> Welcome to FriendlyFire! </h1>
+        <h1 id="FFheadText"> {this.state.userName}'s account page </h1>
         <br />
         <div className="row">
           <form className="col s12 center" onSubmit={this.handleSubmitUser}>
