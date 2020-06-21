@@ -62,7 +62,7 @@ class Home extends Component {
   render() {
     return (
       <section className="container center">
-        <h1 id="FFheadText"> Welcome to FriendlyFire! </h1>
+        <h1 id="FFheadText"> Welcome to FriendOps! </h1>
         <br />
         <div className="row">
           {this.state.error===true && <h5 className="error">Invalid username or password</h5>}
